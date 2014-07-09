@@ -4,7 +4,7 @@ class CreateSessions < ActiveRecord::Migration
 			t.belongs_to :course
 			t.string :name
 			t.datetime :date
-			t.integer :session_num
+			t.integer :sequence_num
     end
   end
 end
