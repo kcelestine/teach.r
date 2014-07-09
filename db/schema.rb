@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20140708195952) do
     t.string  "name"
     t.integer "user_id"
     t.string  "course_code"
+    t.date    "start_date"
+    t.date    "end_date"
   end
 
   create_table "questions", force: true do |t|

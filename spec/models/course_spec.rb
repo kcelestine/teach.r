@@ -1,20 +1,103 @@
 require 'rails_helper'
 
 describe Course do
-  let(:hari) { Instructor.new( name: "superman",
-                         email: "Hari@c.com",
-                         password_digest: "hunter2",
-                         type: "i")}
+  # before(:each) do
+  #   hari.save
+  # end
 
-  let(:wdi) { Course.new( 
-			name: "Web Development Immersive",
-			course_code: "WDI0614",
-			start_date: "June 9, 2014",
-			end_date: "September 8, 2014" ) }
+  subject(:wdi) { Course.new(
+		name: "Web Development Immersive",
+		user_id: hari.id,
+		start_date: "June 9, 2014",
+		end_date: "September 8, 2014" ) }
 
-  it "is valid with a username, email, and password" do
-    expect(hari).to be_valid
+  let(:hari) { Instructor.new(
+		name: "superman",
+    email: "Hari@c.com",
+    password: "hunter2",
+    password_confirmation: "hunter2" )}
+
+  let(:wdi_v_req) { Course.new(
+		name: "Web Development Immersive",
+		user_id: hari.id ) }
+
+  let(:wdi_i_name_dup) { Course.new(
+    name: "Web Development Immersive",
+    user_id: hari.id,
+    start_date: "June 9, 2014",
+    end_date: "September 8, 2014" ) }
+
+  let(:wdi_i_course_code_dup) { Course.new(
+    name: "Web Development Immersive",
+    course_code: wdi.course_code,
+    user_id: hari.id,
+    start_date: "June 9, 2014",
+    end_date: "September 8, 2014" ) }
+
+  let(:wdi_i_name) { Course.new(
+    user_id: hari.id,
+    start_date: "June 9, 2014",
+    end_date: "September 8, 2014" ) }
+
+  let(:wdi_i_user_id) { Course.new(
+    name: "Web Development Immersive",
+    start_date: "June 9, 2014",
+    end_date: "September 8, 2014" ) }
+
+  let(:wdi_name_less_5_characters) { Course.new(
+    name: "Web",
+    user_id: hari.id,
+    start_date: "June 9, 2014",
+    end_date: "September 8, 2014" ) }
+
+  let(:wdi_name_greater_50_characters) { Course.new(
+    name: "Web WebWebWebWebWebWebWebWebWeb WebWebWebWebWebWebWebWebWeb WebWebWebWebWebWebWebWebWeb",
+    user_id: hari.id,
+    start_date: "June 9, 2014",
+    end_date: "September 8, 2014" ) }
+
+  it "is valid with a name, user_id, course_code, start_date and end_date" do
+    hari.save
+    expect(wdi).to be_valid
+  end
+
+  it "has an instructor" do
+    hari.save
+    expect(User.find(wdi.user_id).name).to eq("superman")
+  end
+
+  it "has a course code" do
+    expect(wdi.course_code).to be_true
+  end
+
+  it "is valid with a name, user_id, course_code" do
+    hari.save
+    expect(wdi_v_req).to be_valid
+  end
+
+  it "is not valid with a name thats taken" do
+    wdi.save
+    expect(wdi_i_name_dup.valid?).to eq(false)
+  end
+
+  it "is not valid with a course_code thats taken" do
+    wdi.save
+    expect(wdi_i_course_code_dup.valid?).to eq(false)
+  end
+
+  it "is not valid without a name" do
+    expect(wdi_i_name.valid?).to eq(false)
+  end
+
+  it "is not valid without a user_id" do
+    expect(wdi_i_user_id.valid?).to eq(false)
+  end
+
+  it 'is not valid with a name greater than 50 characters' do
+    expect(wdi_name_greater_50_characters.valid?).to eq(false)
+  end
+
+  it 'is not valid with a name less than 5 characters' do
+    expect(wdi_name_less_5_characters.valid?).to eq(false)
   end
 end
-
-
