@@ -1,4 +1,14 @@
+<ul>
+<% @session.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
 <%= form_for(@session) do |f| %>
+
+  <%= f.label :course_id %>
+  <%= f.number_field :course_id %>
+  <br>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -9,7 +19,7 @@
   <br>
 
   <%= f.label :date %>
-  <%= f.date :date %>
+  <%= f.date_select :date %>
   <br>
 
   <%= f.submit %>

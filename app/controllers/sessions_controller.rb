@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def edit
-    @session = Session.find(params[:id]
+    @session = Session.find(params[:id])
   end
 
   def update
@@ -30,5 +30,6 @@ class SessionsController < ApplicationController
   end
 
   def session_params
+    params.require(:session).permit(:name, :date, :sequence_num, :course_id)
   end
 end
