@@ -1,0 +1,23 @@
+<ul>
+<% @question.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
+
+<%= form_for(@question) do |f| %>
+
+  <%= f.label :question %>
+  <%= f.text_area :question %>
+  <br>
+
+  <%= f.label :answer %>
+  <%= f.text_area :answer %>
+  <br>
+
+  <%= f.label :session_id %>
+  <%= f.number_field :session_id %>
+  <br>
+
+  <%= f.submit %>
+<% end %>

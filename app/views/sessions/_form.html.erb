@@ -1,0 +1,16 @@
+<%= form_for(@session) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+
+  <%= f.label :sequence_num %>
+  <%= f.number_field :sequence_num %>
+  <br>
+
+  <%= f.label :date %>
+  <%= f.date :date %>
+  <br>
+
+  <%= f.submit %>
+<% end %>
