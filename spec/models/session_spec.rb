@@ -63,7 +63,7 @@ describe Session do
 
   it 'is belongs to a course' do
     first.save
-    expect(first.course_id).to eq(1)
+    expect(first.course_id).to be_truthy
   end
 
   it 'is not a valid session without a name' do

@@ -46,7 +46,7 @@ describe Question do
   end
 
   it 'is belongs to a session' do
-    expect(why.session_id).to eq(1)
+    expect(why.session_id).to be_truthy
   end
 
   it 'is not a valid question without a session_id' do
