@@ -1,0 +1,9 @@
+<h2>Sign up</h2>
+
+<ul>
+<% @user.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
+<%= render 'form' %>

@@ -5,17 +5,17 @@ describe Course do
   #   hari.save
   # end
 
+  let(:hari) { Teacher.new(
+		name: "superman",
+    email: "Hari@c.com",
+    password: "hunter2",
+    password_confirmation: "hunter2" )}
+
   subject(:wdi) { Course.new(
 		name: "Web Development Immersive",
 		user_id: hari.id,
 		start_date: "June 9, 2014",
 		end_date: "September 8, 2014" ) }
-
-  let(:hari) { Instructor.new(
-		name: "superman",
-    email: "Hari@c.com",
-    password: "hunter2",
-    password_confirmation: "hunter2" )}
 
   let(:wdi_v_req) { Course.new(
 		name: "Web Development Immersive",
@@ -29,7 +29,6 @@ describe Course do
 
   let(:wdi_i_course_code_dup) { Course.new(
     name: "Web Development Immersive",
-    course_code: wdi.course_code,
     user_id: hari.id,
     start_date: "June 9, 2014",
     end_date: "September 8, 2014" ) }
@@ -56,21 +55,17 @@ describe Course do
     start_date: "June 9, 2014",
     end_date: "September 8, 2014" ) }
 
-  it "is valid with a name, user_id, course_code, start_date and end_date" do
+  it "is valid with a name, user_id, start_date and end_date" do
     hari.save
     expect(wdi).to be_valid
   end
 
-  it "has an instructor" do
+  it "has an teacher" do
     hari.save
-    expect(User.find(wdi.user_id).name).to eq("superman")
+    expect(User.find(wdi.user_id).type).to eq("Teacher")
   end
 
-  it "has a course code" do
-    expect(wdi.course_code).to be_true
-  end
-
-  it "is valid with a name, user_id, course_code" do
+  it "is valid with a name, user_id" do
     hari.save
     expect(wdi_v_req).to be_valid
   end
@@ -80,7 +75,7 @@ describe Course do
     expect(wdi_i_name_dup.valid?).to eq(false)
   end
 
-  it "is not valid with a course_code thats taken" do
+  it "is not valid with  thats taken" do
     wdi.save
     expect(wdi_i_course_code_dup.valid?).to eq(false)
   end

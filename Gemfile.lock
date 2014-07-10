@@ -94,6 +94,7 @@ GEM
       fattr (>= 2.2.0)
       map (>= 5.1.0)
     map (6.5.4)
+    method_source (0.8.2)
     metric_fu (4.11.1)
       cane (~> 2.5, >= 2.5.2)
       churn (~> 0.0.35)
@@ -114,6 +115,12 @@ GEM
     multi_json (1.10.1)
     parallel (1.0.0)
     polyglot (0.3.5)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -194,6 +201,7 @@ GEM
     sexp_processor (4.4.3)
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
+    slop (3.5.0)
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -230,6 +238,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   metric_fu
+  pry-rails
   rails (= 4.1.2)
   rspec-collection_matchers
   rspec-rails
