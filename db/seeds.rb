@@ -1,25 +1,24 @@
-
 teachers = [
   Teacher.create(name: 'Khadijah TheGreat',
                   email: 'k@c.co',
-                  password: "yesyes",
-                  password_confirmation: "yesyes"),
+                  password: "yesyesyes",
+                  password_confirmation: "yesyesyes"),
   Teacher.create(name: 'Maurisa Charles',
                   email: 'm@c.co',
-                  password: "yesyes",
-                  password_confirmation: "yesyes"),
+                  password: "yesyesyes",
+                  password_confirmation: "yesyesyes"),
   Teacher.create(name: 'Keisha Celestine',
                   email: 'ke@c.co',
-                  password: "yesyes",
-                  password_confirmation: "yesyes"),
+                  password: "yesyesyes",
+                  password_confirmation: "yesyesyes"),
   Teacher.create(name: 'Claudette Charles',
                   email: 'c@c.co',
-                  password: "yesyes",
-                  password_confirmation: "yesyes"),
+                  password: "yesyesyes",
+                  password_confirmation: "yesyesyes"),
   Teacher.create(name: 'Lucy Pierrre',
                   email: 'l@p.co',
-                  password: "yesyes",
-                  password_confirmation: "yesyes")
+                  password: "yesyesyes",
+                  password_confirmation: "yesyesyes")
 ]
 
 teachers.each do |teacher|
