@@ -1,5 +1,5 @@
 <h2> <%= @course.name %> </h2>
 
 <% @sessions.each do |session| %>
-<p> <%= link_to session.name, session_path(session) %> | <%= session.questions.count %> questions</p>
+<p> <%= link_to session.name, course_session_path(@course,session) %> | <%= session.questions.count %> questions</p>
 <% end %>
