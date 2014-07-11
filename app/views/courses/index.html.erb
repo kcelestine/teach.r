@@ -1,0 +1,5 @@
+<h2> All courses on Teach.r </h2>
+
+<% @courses.each do |course| %>
+<%= course.name %> <%= course.sessions.count sessions %>
+<% end %>
