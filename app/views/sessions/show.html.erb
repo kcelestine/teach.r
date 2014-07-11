@@ -1,0 +1,8 @@
+<h2> <%= @session.sequence_num %> <%= @session.name %></h2>
+<h2> <%= @session.date %> <%= @session.name %></h2> 
+
+<% @questions.each do |question| %>
+  <p class="question">
+  Question: <%= question.question %> <br />
+  Answer: <%= question.answer %> </p>
+<% end %>
