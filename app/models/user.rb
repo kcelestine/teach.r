@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_secure_password
 
-  validates_presence_of :name, :email, :password, :password_confirmation
+
+  validates_presence_of :name
   validates_length_of :name, minimum: 8, maximum: 50
   validate :email_regex
 
