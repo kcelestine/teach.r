@@ -9,6 +9,14 @@ class Generator
     Array.new(length_of_string){range.sample}.join
   end
 
+  def self.sentence(num_of_words)
+    "#{num_of_words.times.map {Generator.alphabetic_string([*4..9].sample)}.join(" ")}."
+  end
+
+  def self.paragraph(num_of_sentences)
+    "#{num_of_sentences.times.map {Generator.sentence([*7..13].sample)}.join(" ")}\n"
+  end
+
   def self.name_of(obj, num='', length=6)
     "#{obj.capitalize} #{num} #{Generator.alphabetic_string(length)}"
   end

@@ -47,15 +47,12 @@ teachers.each do |teacher|
                     course_id: course.id,
                     sequence_num: num_of_session_student,
                     date: Generator.date("June", num_of_session_student, "2014")))
-    students.push(Student.create(name: Generator.name_of("student", num_of_session_student),
-                    email: Generator.email,
-                    password: "yesyesno",
-                    password_confirmation: "yesyesno"))
+    students.push(Student.create(name: Generator.name_of("student", num_of_session_student) ) )
     end # end session/students push
     sessions.each do |session|
       questions = Array.new
       1.upto(5) do |num_of_question|
-        questions.push(Question.create(question: Generator.name_of("question", num_of_question), session_id: session.id ))
+        questions.push(Question.create(question: Generator.name_of("question", num_of_question), answer: Generator.paragraph(5), session_id: session.id ))
       end # end questions push
     end # end sessions.each
   end # end courses.each
