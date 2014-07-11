@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   def index
     @courses = Course.all # where session is not 0
   end

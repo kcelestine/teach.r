@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root to: "courses#index"
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
-
+  #get 'sign_in', :to => 'users/sessions#new', :as => :new_session
   devise_for :users
   resources :users, except: [:index]
   resources :questions, only: [:edit, :new, :update, :create, :index]
