@@ -5,8 +5,9 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @session = Session.find(@question.session_id)
     if @question.save
-      redirect_to questions_path
+      redirect_to session_path(@session)
     else
       render :new
     end

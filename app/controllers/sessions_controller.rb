@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def show
-    @questions = Question.find_by(session_id: params[:id])
+    @questions = Question.where(session_id: params[:id]).where.not( answer: nil)
+    @session = Session.find(params[:id])
   end
 
   def new
