@@ -1,5 +1,5 @@
 <h2> All courses on Teach.r </h2>
 
 <% @courses.each do |course| %>
-<%= course.name %> <%= course.sessions.count sessions %>
+<p> <%= link_to course.name, course_path(course) %> | <%= course.sessions.count %> sessions | Teacher: <%= Teacher.find(course.user_id).name %></p>
 <% end %>

@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    @courses = Course.all # where session is not 0
   end
 
   def show
     @course = Course.find(params[:id])
-    @sessions = Course.where(course_id: @course.id)
+    @sessions = Session.where(course_id: @course.id)
   end
 
   def new

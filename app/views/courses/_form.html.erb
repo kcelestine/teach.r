@@ -1,0 +1,27 @@
+<ul>
+<% @course.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
+
+<%= form_for(@course) do |f| %>
+
+  <%= f.label :user_id %>
+  <%= f.number_field :user_id %>
+  <br>
+
+  <%= f.label :name %>
+  <%= f.text_area :name %>
+  <br>
+
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+  <br>
+
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+  <br>
+
+  <%= f.submit %>
+<% end %>
