@@ -4,7 +4,10 @@
 <% end %>
 </ul>
 
-<%= form_for(@course, @session) do |f| %>
+<%= form_for(@session) do |f| %>
+
+  <%= f.label :course_id, 'Course' %>
+  <%= f.select :course_id, options_for_select(@courses.map {|course| [course.name, course.id]}) %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -15,7 +18,7 @@
   <br>
 
   <%= f.label :date %>
-  <%= f.date_select :date %>
+  <%= f.date_field :date %>
   <br>
 
   <%= f.submit %>

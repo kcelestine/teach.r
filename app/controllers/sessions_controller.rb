@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   def show
     @questions = Question.where(session_id: params[:id]).where.not( answer: nil)
     @session = Session.find(params[:id])
@@ -6,12 +7,13 @@ class SessionsController < ApplicationController
 
   def new
     @session = Session.new
+    @courses = Course.where(user_id: current_user.id)
   end
 
   def create
     @session = Session.new(session_params)
     if @session.save
-      redirect_to sessions_path
+      redirect_to course_path(@session.course_id)
     else
       render :new
     end

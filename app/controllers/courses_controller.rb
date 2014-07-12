@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @sessions = Session.where(course_id: @course.id)
+    @students = @course.students
   end
 
   def new
@@ -33,6 +34,27 @@ class CoursesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def new_student
+    @student = Student.new
+    render :new_student
+  end
+
+  def create_student
+    #need course id passed through params
+    @course = params[:course_id]
+    pass = Generator.alphabetic_string(8)
+    @student = Student.new(name: "Student #{@course.students.count + 1}", email: params[:email], password: pass, password_confirmation: pass)
+    if @student.save
+      redirect_to courses_path
+    else
+      render :new
+    end
+  end
+
+  def student_params
+    params.require(:student).permit(:name, :email, :password, :pasword_confirmation)
   end
 
   def course_params
