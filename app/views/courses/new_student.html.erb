@@ -1,0 +1,17 @@
+<%= form_for(@student) do |f| %>
+
+  <%= f.label :course_id, 'Course' %>
+  <%= f.select :course_id, options_for_select(@courses.map {|course| [course.name, course.id]}) %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+
+  <%= f.submit %>
+
+
+<%= form_tag("courses/:id/student", method: "post") do %>
+  <%= label_tag(:name, "Search for:") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("Search") %>
+<% end %>
