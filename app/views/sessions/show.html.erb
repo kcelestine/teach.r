@@ -1,9 +1,20 @@
-<h2> <%= @session.sequence_num %> <%= @session.name %></h2>
-<h2> <%= @session.date %> <%= @session.name %></h2>
+<h2> <%= @session.sequence_num %>. 
+	<%= @session.date.strftime("%B %e, %Y")%> 
+	<%= @session.name %> </h2>
+<br />
 
-<%= link_to 'New Question', new_question_path %>
+<%= link_to 'New Question', new_question_path, :class => 'button-link' %>
+
+<table>
 <% @questions.each do |question| %>
-  <p class="question">
-  Question: <%= question.question %> <br />
-  Answer: <%= question.answer %> </p>
+ <tr class="question">
+  <td> Q: <%= question.question %> </td>
+ </tr>
+ <tr><td><p><br/></p></td></tr>
+<tr>
+  <td> A: <%= question.answer %> </td>
+</tr>
+
+ <tr><td><p><br /> <br /></p></td></tr>
 <% end %>
+</table>

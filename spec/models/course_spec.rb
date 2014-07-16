@@ -8,8 +8,8 @@ describe Course do
   let(:hari) { Teacher.new(
 		name: "superman",
     email: "Hari@c.com",
-    password: "hunter2",
-    password_confirmation: "hunter2" )}
+    password: "newhunter2",
+    password_confirmation: "newhunter2" )}
 
   subject(:wdi) { Course.new(
 		name: "Web Development Immersive",

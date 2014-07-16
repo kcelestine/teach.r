@@ -1,5 +1,12 @@
-<h2> All courses on Teach.r </h2>
+<!-- if current user is truthy, show the user his or her courses -->
 
+<h2> All courses on Teach.r </h2>
+<table>
 <% @courses.each do |course| %>
-<p> <%= link_to course.name, course_path(course) %> | <%= course.sessions.count %> sessions | Teacher: <%= Teacher.find(course.user_id).name %></p>
+<tr> 
+	<td> <%= link_to course.name, course_path(course) %> </td> 
+	<td> <%= course.sessions.count %> sessions </td> 
+	<td> Teacher: <%= Teacher.find(course.user_id).name %> </td> 
+</tr>
 <% end %>
+</table>

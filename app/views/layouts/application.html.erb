@@ -3,10 +3,36 @@
 <head>
   <title>TeachrApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'skeleton', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+
+<header class="sixteen columns">
+  <h1 class="">
+    teach.r
+  </h1>
+
+  <nav class="">
+
+  <% if user_signed_in? %>
+    <%= link_to 'New Course', new_course_path %>
+    <%= link_to 'All Courses', courses_path %>
+    <%= link_to "#{current_user.name} (edit)", edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout #{current_user.type}", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  
+  <% else %>
+    <%= link_to 'New Course', new_course_path %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    </nav>
+  <% end %>
+</nav>
+</header>
+
+
 
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -15,23 +41,9 @@
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  <%= link_to 'New Course', new_course_path %>
-  <%= link_to 'All Courses', courses_path %>
-  <br /><br /><br />
-  Logged in as <strong><%= current_user.name %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
 
-  <%= link_to 'New Course', new_course_path %>
-  <%= link_to 'All Courses', courses_path %> <br /><br /><br />
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+  <%= yield %>
 
-<%= yield %>
-
+</div>
 </body>
 </html>

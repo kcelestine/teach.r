@@ -37,24 +37,25 @@ class CoursesController < ApplicationController
   end
 
   def new_student
-    @student = Student.new
-    render :new_student
   end
 
   def create_student
     #need course id passed through params
-    @course = params[:course_id]
-    pass = Generator.alphabetic_string(8)
-    @student = Student.new(name: "Student #{@course.students.count + 1}", email: params[:email], password: pass, password_confirmation: pass)
-    if @student.save
-      redirect_to courses_path
+    course = Course.find(params[:id])
+    pass = "p@s$w0rd"
+    student = Student.new(name: "Student #{course.students.count + 1}", email: params[:student][:email], password: pass, password_confirmation: pass)
+    if student.save
+      course.students.push(student)
+      redirect_to course_path(course)
     else
-      render :new
+      render :new_student
     end
   end
 
+  private
+  
   def student_params
-    params.require(:student).permit(:name, :email, :password, :pasword_confirmation)
+    params.require(:student).permit(:email) 
   end
 
   def course_params

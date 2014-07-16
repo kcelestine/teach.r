@@ -4,8 +4,8 @@ describe Student do
   subject(:khad) { Student.new(
     name: "Khadijh Celestine",
     email: "khadijahthegreat@gmail.com",
-    password: "October",
-    password_confirmation: "October" ) }
+    password: "October9",
+    password_confirmation: "October9" ) }
 
   it 'is a valid student' do
     expect(khad).to be_valid

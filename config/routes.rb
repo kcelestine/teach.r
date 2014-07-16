@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :edit, :update, :show]
   resources :courses, except: [:destroy]
   get "courses/:id/student/new", to: "courses#new_student", as: "new_student"
-  post "courses/:id/student/new", to: "courses#new_student"
+  post "courses/:id/student", to: "courses#create_student"
 end

@@ -4,8 +4,8 @@ describe Teacher do
   subject(:khad) { Teacher.new(
     name: "Khadijh Celestine",
     email: "khadijahthegreat@gmail.com",
-    password: "October",
-    password_confirmation: "October" ) }
+    password: "October9",
+    password_confirmation: "October9" ) }
 
   it 'is a valid teacher' do
     expect(khad).to be_valid

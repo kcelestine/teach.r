@@ -1,17 +1,7 @@
-<%= form_for(@student) do |f| %>
+<!-- How do I get errors shown here? -->
 
-  <%= f.label :course_id, 'Course' %>
-  <%= f.select :course_id, options_for_select(@courses.map {|course| [course.name, course.id]}) %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-
-  <%= f.submit %>
-
-
-<%= form_tag("courses/:id/student", method: "post") do %>
-  <%= label_tag(:name, "Search for:") %>
-  <%= text_field_tag(:name) %>
-  <%= submit_tag("Search") %>
+<%= form_tag("/courses/#{params[:id]}/student", method: "post") do %>
+  <%= label_tag('student[email]', "Email") %>
+  <%= text_field_tag('student[email]') %>
+  <%= submit_tag('New Student') %>
 <% end %>

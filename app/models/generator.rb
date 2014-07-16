@@ -28,4 +28,13 @@ class Generator
   def self.email()
     "#{Generator.alphabetic_string(8)}@#{Generator.alphabetic_string(3)}.com"
   end
+
+  def self.student_email(num)
+    "email#{num}@student.com"
+  end
+
+  @num = 0
+  def self.num
+    @num = @num + 1
+  end
 end

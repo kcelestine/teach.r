@@ -16,8 +16,8 @@ describe Question do
   let(:hari) { Teacher.new(
     name: "superman",
     email: "Hari@c.com",
-    password: "hunter2",
-    password_confirmation: "hunter2" )}
+    password: "newhunter2",
+    password_confirmation: "newhunter2" )}
 
   let(:first) { Session.new(
     name: "Intro to Git",
